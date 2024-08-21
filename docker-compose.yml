@@ -1,0 +1,34 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend-products
+      - backend-merchandise
+      - backend-shopping-cart
+
+  backend-products:
+    build:
+      context: .
+      dockerfile: products/Dockerfile
+    ports:
+      - "3001:3001"
+
+  backend-merchandise:
+    build:
+      context: .
+      dockerfile: merchandise/Dockerfile
+    ports:
+      - "3003:3003"
+
+  backend-shopping-cart:
+    build:
+      context: .
+      dockerfile: shopping-cart/Dockerfile
+    ports:
+      - "3002:3002"
+
